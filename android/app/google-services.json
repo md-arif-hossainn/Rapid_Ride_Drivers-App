@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "343312951260",
+    "firebase_url": "https://flutter-uber-clone-with-11fe5-default-rtdb.firebaseio.com",
+    "project_id": "flutter-uber-clone-with-11fe5",
+    "storage_bucket": "flutter-uber-clone-with-11fe5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343312951260:android:3136ace75728ab17355119",
+        "android_client_info": {
+          "package_name": "com.arif.driversapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-of2GLbtBh5v87izchk2BrEorQVPA7AU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343312951260:android:48deaa0df3b60185355119",
+        "android_client_info": {
+          "package_name": "com.arif.userapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-of2GLbtBh5v87izchk2BrEorQVPA7AU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
