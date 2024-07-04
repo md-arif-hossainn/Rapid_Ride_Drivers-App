@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage>
 {
   final Completer<GoogleMapController> googleMapCompleterController = Completer<GoogleMapController>();
   GoogleMapController? controllerGoogleMap;
-  Position? currentPositionOfUser;
+  Position? currentPositionOfDriver;
   Color colorToShow = Colors.green;
   String titleToShow = "GO ONLINE NOW";
   bool isDriverAvailable = false;
@@ -51,9 +51,10 @@ class _HomePageState extends State<HomePage>
   getCurrentLiveLocationOfDriver() async
   {
     Position positionOfUser = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
-    currentPositionOfUser = positionOfUser;
+    currentPositionOfDriver = positionOfUser;
+    driverCurrentPosition = currentPositionOfDriver;
 
-    LatLng positionOfUserInLatLng = LatLng(currentPositionOfUser!.latitude, currentPositionOfUser!.longitude);
+    LatLng positionOfUserInLatLng = LatLng(currentPositionOfDriver!.latitude, currentPositionOfDriver!.longitude);
 
     CameraPosition cameraPosition = CameraPosition(target: positionOfUserInLatLng, zoom: 15);
     controllerGoogleMap!.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
@@ -66,8 +67,8 @@ class _HomePageState extends State<HomePage>
 
     Geofire.setLocation(
       FirebaseAuth.instance.currentUser!.uid,
-      currentPositionOfUser!.latitude,
-      currentPositionOfUser!.longitude,
+      currentPositionOfDriver!.latitude,
+      currentPositionOfDriver!.longitude,
     );
 
     newTripRequestReference = FirebaseDatabase.instance.ref()
@@ -84,15 +85,15 @@ class _HomePageState extends State<HomePage>
     positionStreamHomePage = Geolocator.getPositionStream()
         .listen((Position position)
     {
-      currentPositionOfUser = position;
+      currentPositionOfDriver = position;
 
       //if(isDriverAvailable == true)
       if(isDriverAvailable)
       {
         Geofire.setLocation(
           FirebaseAuth.instance.currentUser!.uid,
-          currentPositionOfUser!.latitude,
-          currentPositionOfUser!.longitude,
+          currentPositionOfDriver!.latitude,
+          currentPositionOfDriver!.longitude,
         );
       }
 
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage>
   {
     PushNotificationSystem notificationSystem = PushNotificationSystem();
     notificationSystem.generateDeviceRegistrationToken();
-    notificationSystem.startListeningForNewNotification();
+    notificationSystem.startListeningForNewNotification(context);
   }
 
   @override
