@@ -47,6 +47,10 @@ dependencies:
   flutter_geofire:
   firebase_messaging:
   assets_audio_player:
+  http:
+  flutter_polyline_points:
+  url_launcher:
+
 
 
 
