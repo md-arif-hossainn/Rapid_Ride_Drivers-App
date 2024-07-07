@@ -624,6 +624,7 @@ class _NewTripPageState extends State<NewTripPage>
                           else if(statusOfTrip == "ontrip")
                           {
                             //end the trip
+                            endTripNow();
                           }
                         },
                         style: ElevatedButton.styleFrom(
