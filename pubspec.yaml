@@ -50,6 +50,7 @@ dependencies:
   http:
   flutter_polyline_points:
   url_launcher:
+  restart_app:
 
 
 

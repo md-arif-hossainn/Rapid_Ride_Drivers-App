@@ -98,6 +98,23 @@ class CommonMethods
     return detailsModel;
   }
 
+  calculateFareAmount(DirectionDetails directionDetails)
+  {
+    double distancePerKmAmount = 0.4;
+    double durationPerMinuteAmount = 0.3;
+    double baseFareAmount = 2;
+
+
+    double totalDistanceTravelFareAmount = (directionDetails.distance! / 1000) * distancePerKmAmount;
+    double totalDurationSpendFareAmount = (directionDetails.driveTime! / 60) * durationPerMinuteAmount;
+
+    double overAllTotalFareAmount = baseFareAmount + totalDistanceTravelFareAmount + totalDurationSpendFareAmount;
+
+    print('-------------------------Charge amount--------------');
+    print(overAllTotalFareAmount.toString());
+    return overAllTotalFareAmount.toStringAsFixed(1);
+  }
+
 
 }
 
